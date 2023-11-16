@@ -22,6 +22,10 @@ depends upon adder and uses `wasi:cli/run` runtime
 
 depends upon adder and uses `wasmtime` + `wasmtime-wasi` runtime
 
+- rust-app
+
+depends upon adder and uses `wasmtime` + `wasmtime-wasi` runtime
+
 
 ## Quick start
 
