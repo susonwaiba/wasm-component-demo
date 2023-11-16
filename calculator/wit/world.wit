@@ -1,0 +1,16 @@
+package component:calculator@0.1.0;
+
+interface calculate {
+    calculate: func(x: u32, y: u32) -> u32;
+}
+
+interface increment {
+    increment: func(x: u32) -> u32;
+}
+
+world calculator {
+    import component:adder/add@0.1.0;
+
+    export calculate;
+    export increment;
+}
