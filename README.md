@@ -83,7 +83,6 @@ curl http://127.0.0.1:8080/wasm-at-startup
 
 ```console
 jco transpile adder/target/wasm32-wasi/release/adder.wasm -o node-app/component
-(cd node-app && npm install)
 (cd node-app && npm run start)
 ```
 
