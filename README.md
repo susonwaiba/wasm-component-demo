@@ -1,9 +1,10 @@
 # wasm-component-demo
 
-This repository is sample implementation of (https://github.com/WebAssembly/component-model)[Component Model design and specification
-].
-
 State: Under Testing
+
+This repository is sample implementation.
+
+https://github.com/WebAssembly/component-model
 
 
 ## Rust
