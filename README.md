@@ -27,9 +27,7 @@ depends upon adder and uses `wasmtime` + `wasmtime-wasi` runtime
 depends upon adder and uses `wasmtime` + `wasmtime-wasi` runtime
 
 
-## Quick start
-
-- Dependencies
+## Dependencies
 
 https://github.com/bytecodealliance/cargo-component
 
@@ -39,6 +37,8 @@ https://github.com/bytecodealliance/WASI-Virt
 
 https://github.com/bytecodealliance/wasm-tools
 
+
+## Quick start
 
 - Running rust-app
 
@@ -69,7 +69,8 @@ curl http://127.0.0.1:8080/wasm
 curl http://127.0.0.1:8080/wasm-at-startup
 ```
 
-- Inspect *.wasm file
+
+## Inspect *.wasm file
 
 ```console
 wasm-tools component wit calculator.composed.wasm
