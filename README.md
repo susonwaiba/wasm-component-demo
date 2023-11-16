@@ -10,6 +10,9 @@ https://github.com/WebAssembly/component-model
 ## Rust
 
 - adder
+
+rust-component
+
 - calculator
 
 depends upon adder for add
@@ -26,6 +29,10 @@ depends upon adder and uses `wasmtime` + `wasmtime-wasi` runtime
 
 depends upon adder and uses `wasmtime` + `wasmtime-wasi` runtime
 
+- node-app
+
+depends upon adder and uses `jco` transpile and `nodejs` runtime
+
 
 ## Dependencies
 
@@ -36,6 +43,8 @@ https://github.com/bytecodealliance/wasmtime
 https://github.com/bytecodealliance/WASI-Virt
 
 https://github.com/bytecodealliance/wasm-tools
+
+https://github.com/bytecodealliance/jco
 
 
 ## Quick start
@@ -62,13 +71,21 @@ chmod +x app.sh
 chmod +x app.sh
 ./app.sh build
 ./app.sh serve
+```
 
-# test
+```console
 curl http://127.0.0.1:8080
 curl http://127.0.0.1:8080/wasm
 curl http://127.0.0.1:8080/wasm-at-startup
 ```
 
+- Running node-app
+
+```console
+jco transpile adder/target/wasm32-wasi/release/adder.wasm -o node-app/component
+(cd node-app && npm install)
+(cd node-app && npm run start)
+```
 
 ## Inspect *.wasm file
 
