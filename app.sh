@@ -64,7 +64,7 @@ if  [ "$ARG1" = "build:rust" ]; then
     for DIR in $DIR_LIST; do
         if [ -d "$DIR" ] && [ -f "$DIR/Cargo.toml" ]; then
             if [ "$ARG2" = "all" ] || [ "$ARG2" = "$DIR" ]; then
-                echo "- Running ./app.sh build $DIR";
+                echo "- Running ./app.sh build:rust $DIR";
                 if [ "$(cat $DIR/Cargo.toml | grep "cargo-component-bindings")" != "" ]; then
                     echo "- Building $DIR.wasm";
                     (cd $DIR && cargo-component build --release);

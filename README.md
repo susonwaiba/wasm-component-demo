@@ -27,13 +27,13 @@ depends upon adder and uses `wasmtime` + `wasmtime-wasi` runtime
 
 - Dependencies
 
-```console
-cargo install cargo-component
-```
+https://github.com/bytecodealliance/cargo-component
 
 https://github.com/bytecodealliance/wasmtime
 
 https://github.com/bytecodealliance/WASI-Virt
+
+https://github.com/bytecodealliance/wasm-tools
 
 
 - Running rust-app
