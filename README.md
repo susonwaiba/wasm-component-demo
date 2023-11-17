@@ -35,7 +35,7 @@ depends upon adder and uses `jco` transpile and `nodejs` runtime
 
 - express-app
 
-depends upon adder and uses `jco` transpile and `browser` runtime
+depends upon adder and uses `jco` transpile and `browser` as runtime
 
 
 ## Dependencies
