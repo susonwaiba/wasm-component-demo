@@ -107,6 +107,10 @@ jco transpile adder/target/wasm32-wasi/release/adder.wasm -o express-app/public/
 ## Inspect *.wasm file
 
 ```console
+wasm-tools component wit adder/target/wasm32-wasi/release/adder.wasm
+wasm-tools component wit calculator/target/wasm32-wasi/release/calculator.wasm
+wasm-tools component wit cli-app/target/wasm32-wasi/release/cli-app.wasm
 wasm-tools component wit calculator.composed.wasm
+wasm-tools component wit cli-app.virt.wasm
 wasm-tools component wit app.wasm
 ```
