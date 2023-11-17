@@ -7,7 +7,7 @@ This repository is sample implementation.
 https://github.com/WebAssembly/component-model
 
 
-## Rust
+## Components
 
 - adder
 
@@ -32,6 +32,10 @@ depends upon adder and uses `wasmtime` + `wasmtime-wasi` runtime
 - node-app
 
 depends upon adder and uses `jco` transpile and `nodejs` runtime
+
+- express-app
+
+depends upon adder and uses `jco` transpile and `browser` runtime
 
 
 ## Dependencies
@@ -62,7 +66,10 @@ chmod +x app.sh
 ```console
 chmod +x app.sh
 ./app.sh build
-./app.sh run
+wasmtime --wasm component-model cli-app/target/wasm32-wasi/release/cli-app.wasm
+
+# Not ready yet
+# ./app.sh run
 ```
 
 - Running actix-app
@@ -71,6 +78,10 @@ chmod +x app.sh
 chmod +x app.sh
 ./app.sh build
 ./app.sh serve
+
+# Or
+
+(cd actix-app && ./target/release/actix-app)
 ```
 
 ```console
@@ -84,6 +95,13 @@ curl http://127.0.0.1:8080/wasm-at-startup
 ```console
 jco transpile adder/target/wasm32-wasi/release/adder.wasm -o node-app/component
 (cd node-app && npm run start)
+```
+
+- Running express-app
+
+```console
+jco transpile adder/target/wasm32-wasi/release/adder.wasm -o express-app/public/component
+(cd express-app && npm run start)
 ```
 
 ## Inspect *.wasm file
