@@ -91,7 +91,7 @@ if  [ "$ARG1" = "build:virt" ]; then
     if [ -d "$ARG2" ] && [ -f "$ARG2/Cargo.toml" ]; then
         echo "- Running ./app.sh build:virt $ARG2";
         echo "- Building $ARG2.virt.wasm";
-        (wasi-virt -o $ARG2.virt.wasm --stdio=ignore $ARG2/target/wasm32-wasi/release/$ARG2.wasm)
+        (wasi-virt $ARG2/target/wasm32-wasi/release/$ARG2.wasm --stdio=allow -o $ARG2.virt.wasm);
     fi;
     exit;
 fi;
@@ -111,16 +111,19 @@ fi;
 if [ "$ARG1" = "build" ]; then
     echo "- Running ./app.sh build";
     ./app.sh build:rust all;
-    ./app.sh build:virt cli-app;
-    echo "- Building calculator.composed.wasm";
-    (wasm-tools compose calculator/target/wasm32-wasi/release/calculator.wasm \
-        -d adder/target/wasm32-wasi/release/adder.wasm \
-        -o calculator.composed.wasm);
-    echo "- Building app.wasm";
-    (wasm-tools compose cli-app.virt.wasm \
-        -d adder/target/wasm32-wasi/release/adder.wasm \
-        -d calculator.composed.wasm \
-        -o app.wasm);
+    # ./app.sh build:virt cli-app;
+    # echo "- Building calculator.composed.wasm";
+    # (wasm-tools compose calculator/target/wasm32-wasi/release/calculator.wasm \
+    #     -d adder/target/wasm32-wasi/release/adder.wasm \
+    #     -o calculator.composed.wasm);
+    # echo "- Building app.wasm";
+    # (wasm-tools compose cli-app.virt.wasm \
+    #     -d adder/target/wasm32-wasi/release/adder.wasm \
+    #     -o app.wasm);
+    # (wasm-tools compose cli-app.virt.wasm \
+    #     -d adder/target/wasm32-wasi/release/adder.wasm \
+    #     -d calculator.composed.wasm \
+    #     -o app.wasm);
     exit;
 fi;
 
