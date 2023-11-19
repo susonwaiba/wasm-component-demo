@@ -101,6 +101,7 @@ jco transpile adder/target/wasm32-wasi/release/adder.wasm -o node-app/component
 
 ```console
 jco transpile adder/target/wasm32-wasi/release/adder.wasm -o express-app/public/component
+(cd express-app && npm install)
 (cd express-app && npm run start)
 
 # Visit http://127.0.0.1:3000 via browser
