@@ -7,5 +7,5 @@ edition = "2021"
 
 [dependencies]
 anyhow = "1.0.75"
-wasmtime = { version = "14.0.4", features = ['component-model'] }
-wasmtime-wasi = "14.0.4"
+wasmtime = { version = "15.0.0", features = ['component-model'] }
+wasmtime-wasi = "15.0.0"
