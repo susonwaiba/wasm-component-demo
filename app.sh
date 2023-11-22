@@ -124,6 +124,11 @@ if [ "$ARG1" = "build" ]; then
     #     -d adder/target/wasm32-wasi/release/adder.wasm \
     #     -d calculator.composed.wasm \
     #     -o app.wasm);
+    echo "- Building express-app";
+    (cd express-app && npm install);
+    echo "- Building js-divider";
+    (cd js-divider && npm install);
+    (cd js-divider && npm run build);
     exit;
 fi;
 
