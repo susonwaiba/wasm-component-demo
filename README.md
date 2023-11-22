@@ -37,6 +37,17 @@ depends upon adder and uses `jco` transpile and `nodejs` runtime
 
 depends upon adder and uses `jco` transpile and `browser` as runtime
 
+- js-divider
+
+javascript-component
+
+- js-app
+
+depends upon js-divider and uses `jco` transpile and `nodejs` runtime
+
+- divider-rust-app
+
+depends upon js-divider and uses `wasmtime` + `wasmtime-wasi` runtime
 
 ## Dependencies
 
@@ -107,6 +118,27 @@ jco transpile adder/target/wasm32-wasi/release/adder.wasm -o express-app/public/
 # Visit http://127.0.0.1:3000 via browser
 ```
 
+- Running js-divider
+
+```console
+(cd js-divider && npm install)
+(cd js-divider && npm run build)
+```
+
+- Running js-app
+
+```console
+jco transpile js-divider/js-divider.wasm -o js-app/component
+(cd js-app && npm start)
+```
+
+- Running divider-rust-app
+
+```console
+(cd divider-rust-app && cargo build --release)
+(cd divider-rust-app && ./target/release/divider-rust-app)
+```
+
 ## Inspect *.wasm file
 
 ```console
@@ -116,4 +148,5 @@ wasm-tools component wit cli-app/target/wasm32-wasi/release/cli-app.wasm
 wasm-tools component wit calculator.composed.wasm
 wasm-tools component wit cli-app.virt.wasm
 wasm-tools component wit app.wasm
+wasm-tools component wit js-divider/js-divider.wasm
 ```
