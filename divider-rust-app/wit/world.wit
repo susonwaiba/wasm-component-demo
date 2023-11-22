@@ -1,0 +1,5 @@
+package component:divider@0.1.0;
+
+world divider {
+    export divide: func(x: u32, y: u32) -> u32;
+}
