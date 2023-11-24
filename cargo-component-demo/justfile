@@ -35,10 +35,10 @@ clean-rust:
     (cd actix-app && cargo clean)
 
 clean-js:
-    (rm -rf node-app/component/*)
-    (rm -rf node-app/node_modules/*)
-    (rm -rf express-app/node_modules/*)
-    (rm -rf express-app/public/component/*)
+     rm -rf node-app/component/*
+     rm -rf node-app/node_modules/*
+     rm -rf express-app/node_modules/*
+     rm -rf express-app/public/component/*
 
 js-transpile:
     jco transpile target/wasm32-wasi/release/adder.wasm -o node-app/component

@@ -19,10 +19,10 @@ clean-rust:
     (cd divider-rust-app && cargo clean)
  
 clean-js:
-    (rm -rf js-app/component/*)
-    (rm -rf js-app/node_modules/*)
-    (rm -rf js-divider/component/*)
-    (rm -rf js-divider/node_modules/*)
+     rm -rf js-app/component/*
+     rm -rf js-app/node_modules/*
+     rm -rf js-divider/component/*
+     rm -rf js-divider/node_modules/*
 
 js-transpile:
     jco transpile js-divider/js-divider.wasm -o js-app/component
