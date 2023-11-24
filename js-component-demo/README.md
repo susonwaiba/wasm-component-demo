@@ -32,6 +32,7 @@ rust and cargo
 ## Quick start
 
 ```console
+just
 just build
 ```
 

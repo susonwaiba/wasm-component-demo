@@ -54,6 +54,7 @@ https://github.com/bytecodealliance/jco
 ## Quick start
 
 ```console
+just
 just build
 ```
 
