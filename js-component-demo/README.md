@@ -28,6 +28,8 @@ https://github.com/bytecodealliance/jco
 
 rust and cargo
 
+https://github.com/bytecodealliance/wasmtime
+
 
 ## Quick start
 
