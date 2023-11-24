@@ -93,7 +93,7 @@ just run-node-app
 
 ```console
 just js-transpile
-just run-node-app
+just serve-express-app
 
 # Visit http://127.0.0.1:3000 via browser
 ```
