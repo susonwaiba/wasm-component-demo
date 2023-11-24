@@ -1,0 +1,62 @@
+list:
+  @just --list
+
+build: build-rust-component build-composed-component build-rust-app build-js-project
+
+build-rust-component:
+    (cd adder && cargo-component build --release)
+    (cd calculator && cargo-component build --release)
+    (cd cli-app && cargo-component build --release)
+
+build-composed-component:
+    wasm-tools compose target/wasm32-wasi/release/calculator.wasm \
+    -o target/wasm32-wasi/release/calculator.composed.wasm \
+    -d target/wasm32-wasi/release/adder.wasm
+    wasm-tools compose target/wasm32-wasi/release/cli-app.wasm \
+    -o target/wasm32-wasi/release/cli-app.composed.wasm \
+    -d target/wasm32-wasi/release/calculator.composed.wasm \
+    -d target/wasm32-wasi/release/adder.wasm
+
+build-rust-app:
+    (cd rust-app && cargo build --release)
+    (cd actix-app && cargo build --release)
+
+build-js-project:
+    (cd node-app && npm install)
+    (cd express-app && npm install)
+
+clean: clean-rust clean-js
+
+clean-rust:
+    (cd adder && cargo clean)
+    (cd calculator && cargo clean)
+    (cd cli-app && cargo clean)
+    (cd rust-app && cargo clean)
+    (cd actix-app && cargo clean)
+
+clean-js:
+    (rm -rf node-app/component/*)
+    (rm -rf node-app/node_modules/*)
+    (rm -rf express-app/node_modules/*)
+    (rm -rf express-app/public/component/*)
+
+js-transpile:
+    jco transpile target/wasm32-wasi/release/adder.wasm -o node-app/component
+    jco transpile target/wasm32-wasi/release/adder.wasm -o express-app/public/component
+
+run: run-cli-app run-rust-app run-node-app
+
+run-cli-app:
+    wasmtime --wasm component-model target/wasm32-wasi/release/cli-app.composed.wasm
+
+run-rust-app:
+    target/release/rust-app
+
+run-node-app:
+    (cd node-app && npm run start)
+
+serve-actix-app:
+    target/release/actix-app
+
+serve-express-app:
+    (cd express-app && npm run start)

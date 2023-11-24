@@ -1,0 +1,9 @@
+[workspace]
+members = [
+    "adder",
+    "calculator",
+    "cli-app",
+    "rust-app",
+    "actix-app",
+]
+resolver = "2"

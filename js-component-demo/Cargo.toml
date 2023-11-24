@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "divider-rust-app",
+]
+resolver = "2"

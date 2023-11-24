@@ -1,0 +1,39 @@
+list:
+  @just --list
+
+build: build-js-component build-js-app build-rust-app
+
+build-js-component:
+    (cd js-divider && npm install)
+    (cd js-divider && npm run build)
+
+build-js-app:
+    (cd js-app && npm install)
+
+build-rust-app:
+    (cd divider-rust-app && cargo build --release)
+
+clean: clean-rust clean-js
+
+clean-rust:
+    (cd divider-rust-app && cargo clean)
+ 
+clean-js:
+    (rm -rf js-app/component/*)
+    (rm -rf js-app/node_modules/*)
+    (rm -rf js-divider/component/*)
+    (rm -rf js-divider/node_modules/*)
+
+js-transpile:
+    jco transpile js-divider/js-divider.wasm -o js-app/component
+
+run: run-component-test run-js-app run-rust-app
+
+run-component-test:
+    (cd js-app && npm run start)
+
+run-js-app:
+    (cd js-app && npm run start)
+
+run-rust-app:
+    target/release/divider-rust-app
