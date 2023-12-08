@@ -1,4 +1,4 @@
-# Spin Microservice
+# Spin Microservice Demo
 
 This repository is sample implementation.
 
