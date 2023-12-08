@@ -1,0 +1,35 @@
+spin_manifest_version = 2
+
+[application]
+name = "spin-microservice-demo"
+version = "0.1.0"
+authors = ["Suson Waiba <susonwaiba@gmail.com>"]
+description = ""
+
+[[trigger.http]]
+route = "/ts-adder/..."
+component = "ts-adder"
+
+[component.ts-adder]
+source = "ts-adder/target/ts-adder.wasm"
+[component.ts-adder.build]
+command = "npm run build"
+workdir = "ts-adder"
+
+[[trigger.http]]
+route = "/ts-calculator/..."
+component = "ts-calculator"
+
+[component.ts-calculator]
+source = "ts-calculator/target/ts-calculator.wasm"
+[component.ts-calculator.build]
+command = "npm run build"
+workdir = "ts-calculator"
+
+[[trigger.http]]
+route = "/static/..."
+component = "static"
+
+[component.static]
+source = { url = "https://github.com/fermyon/spin-fileserver/releases/download/v0.1.0/spin_static_fs.wasm", digest = "sha256:96c76d9af86420b39eb6cd7be5550e3cb5d4cc4de572ce0fd1f6a29471536cb4" }
+files = [{ source = "static", destination = "/" }]

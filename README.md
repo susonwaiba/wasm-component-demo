@@ -7,4 +7,5 @@ This repository is sample implementation.
 
 - cargo-component-demo
 - js-component-demo
+- spin-microservice-demo
 
