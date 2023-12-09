@@ -32,6 +32,9 @@ curl http://127.0.0.1:3000/ts-calculator/home/2
 curl http://127.0.0.1:3000/rs-adder
 curl http://127.0.0.1:3000/rs-calculator
 
+curl http://127.0.0.1:3000/go-adder
+curl http://127.0.0.1:3000/go-calculator
+
 curl http://127.0.0.1:3000/static/hello.txt
 ```
 
