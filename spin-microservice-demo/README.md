@@ -42,4 +42,7 @@ curl http://127.0.0.1:3000/static/hello.txt
 
 - ts-adder
 - ts-calculator
-
+- rs-adder
+- rs-calculator
+- go-adder
+- go-calculator
