@@ -1,0 +1,10 @@
+package component:calculator;
+
+interface calculate {
+    eval-expression: func(expr: string) -> u32;
+}
+
+world calculator {
+    export calculate;
+    import component:adder/add;
+}

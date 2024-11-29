@@ -1,0 +1,39 @@
+list:
+  @just --list
+
+run:
+    wasmtime run cli-app.wasm
+
+serve:
+    wasmtime serve proxy-app.wasm
+
+build: build-rust-component build-composed-component
+
+build-rust-component:
+    cd adder && cargo component build --release --target wasm32-wasip2
+    cd calculator && cargo component build --release --target wasm32-wasip2
+    cd cli-app && cargo component build --release --target wasm32-wasip2
+    cd proxy-app && cargo component build --release --target wasm32-wasip1
+
+build-composed-component:
+    wac plug cli-app/target/wasm32-wasip2/release/cli-app.wasm \
+    --plug calculator/target/wasm32-wasip2/release/calculator.wasm \
+    -o cli-app-1.wasm
+    wac plug cli-app-1.wasm \
+    --plug adder/target/wasm32-wasip2/release/adder.wasm \
+    -o cli-app.wasm
+
+    wac plug proxy-app/target/wasm32-wasip1/release/proxy_app.wasm \
+    --plug calculator/target/wasm32-wasip2/release/calculator.wasm \
+    -o proxy-app-1.wasm
+    wac plug proxy-app-1.wasm \
+    --plug adder/target/wasm32-wasip2/release/adder.wasm \
+    -o proxy-app.wasm
+
+install:
+    cd proxy-app && wit-deps lock
+
+cargo-install:
+    cargo install cargo-component
+    cargo install wasm-tools
+    cargo install wit-deps-cli

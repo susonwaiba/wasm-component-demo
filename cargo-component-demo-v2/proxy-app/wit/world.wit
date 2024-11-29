@@ -1,0 +1,6 @@
+package component:proxy-app;
+
+world proxy-app {
+    include wasi:http/proxy@0.2.2;
+    import component:calculator/calculate;
+}

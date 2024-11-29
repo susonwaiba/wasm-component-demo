@@ -1,0 +1,5 @@
+package component:cli-app;
+
+world cli-app {
+    import component:calculator/calculate;
+}
