@@ -38,6 +38,8 @@ https://github.com/bytecodealliance/wasm-tools
 
 ```console
 just
+just cargo-install
+just install
 just build
 ```
 
